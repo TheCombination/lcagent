@@ -6,5 +6,11 @@ int main(int argc, char** argv){
 	--argc;
 	++argv;
 	
+	// Ensures there is at least one argument
+	if (argc < 1) {
+		std::cerr << "lcagent: I require at least one argument.\n"
+			 << "lcagent: Try the command 'lcagent help' for more information on what I can do for you!\n"; 
+	}	
+	
 	return EXIT_SUCCESS;
 }
