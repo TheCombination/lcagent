@@ -1,3 +1,8 @@
+# Ignore files without a filextensions
+*
+!/**/
+!*.*
+
 # Prerequisites
 *.d
 
@@ -30,3 +35,4 @@
 *.exe
 *.out
 *.app
+
