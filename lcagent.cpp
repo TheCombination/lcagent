@@ -48,9 +48,18 @@ int main(int argc, char **argv) {
 }
 
 int init(std::string_view LCAGENT_DIR) {
+	// Check if the LCAGENT_DIR already exists
 	if (std::filesystem::exists(LCAGENT_DIR) && std::filesystem::is_directory(LCAGENT_DIR)) {
-		std::cerr << "lcaagent: The lcagent is already initialized in your current directory!\n";
+		std::cerr << "lcagent: The lcagent is already initialized in your current working directory!\n";
 		return EXIT_FAILURE;
+	} else if (std::filesystem::exists(LCAGENT_DIR)) {
+		std::cerr << "lcagent: There exists a \".lcagent\" file in your current working directory. Please delete it to proceed!\n";
+		return EXIT_FAILURE;
+	}
+
+	// Create the directory
+	if (!std::filesystem::create_directory(LCAGENT_DIR)) {
+		std::cerr << "lcagent: I failed at creating a directory in the path \"" << LCAGENT_DIR << "\" :(\n"; 
 	}
 
 	return EXIT_SUCCESS;
