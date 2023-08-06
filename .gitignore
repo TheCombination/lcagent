@@ -1,4 +1,5 @@
-# Ignore files without a filextensions
+# Ignore files without a file extensions
+# Also seems to ignore files/dirs that are just file extensions (i.e hidden files/dirs)
 *
 !/**/
 !*.*
